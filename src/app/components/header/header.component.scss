@@ -1,5 +1,5 @@
 .container {
-  width: 100%;
+  max-width: 100%;
   height: 60px;
   display: flex;
   align-items: center;
@@ -12,12 +12,25 @@
   font-size: 40px;
   width: 40px;
   height: 40px;
+  color: #555555;
 }
 
 .button-icon {
+  display: flex;
   height: 50px;
   width: 50px;
+  border-radius: 4px;
+  align-items: center;
+  justify-content: center;
   padding: 0;
+  margin-left: 5px;
+}
+
+.button-icon:hover {
+  background: #4caf50;
+  .icon {
+    color: #fff;
+  }
 }
 
 .margin-right {

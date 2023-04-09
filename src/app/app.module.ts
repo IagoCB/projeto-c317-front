@@ -8,10 +8,21 @@ import { HeaderComponent } from "./components/header/header.component";
 
 import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
+import { SidebarComponent } from "./components/sidebar/sidebar.component";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatListModule } from "@angular/material/list";
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, MatIconModule, MatButtonModule],
+  declarations: [AppComponent, HeaderComponent, SidebarComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatListModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

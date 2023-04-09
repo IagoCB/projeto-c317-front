@@ -1,0 +1,74 @@
+.container {
+  left: 0 !important;
+}
+
+.sidenav {
+  background-color: #fff;
+  width: 240px;
+  box-shadow: 7px 4px 21px 13px rgba(0, 0, 0, 0.25);
+}
+
+.grey {
+  color: #a9afbb;
+}
+
+.sidenav {
+  left: 0;
+}
+
+.sidenav i {
+  padding-right: 10px;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+}
+
+.content {
+  padding: 16px;
+  background-color: #fff;
+}
+
+.nav-list {
+  padding: 24px;
+}
+
+.nav-list i {
+  font-size: 28px;
+}
+
+.nav-list a {
+  margin-bottom: 12px;
+  border-radius: 4px;
+}
+
+.nav-list a:hover {
+  background: #4caf50;
+  i,
+  span {
+    color: #fff;
+  }
+}
+
+.project-name {
+  display: flex;
+  align-items: center;
+  margin: 24px 24px 0px 24px;
+  border-bottom: 1px solid #676464;
+  height: 50px;
+  justify-content: center;
+}
+
+.project-name span {
+  font-family: Roboto, Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23px;
+  color: #000000;
+}
+
+.project-name i {
+  font-size: 32px;
+}

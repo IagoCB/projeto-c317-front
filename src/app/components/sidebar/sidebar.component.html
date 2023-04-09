@@ -1,0 +1,37 @@
+<mat-sidenav-container class="container">
+  <mat-sidenav class="sidenav" mode="side" position="start" opened fixedInViewport="true">
+    <div class="project-name">
+      <i class="material-icons"> receipt_long </i>
+      <span> Project name </span>
+    </div>
+    <mat-nav-list class="nav-list">
+      <a mat-list-item routerLink="/">
+        <div class="center">
+          <i class="material-icons grey"> dashboard </i>
+          <span class="grey"> Dashboard </span>
+        </div>
+      </a>
+      <a mat-list-item routerLink="/">
+        <div class="center">
+          <i class="material-icons-outlined grey"> payments </i>
+          <span class="grey"> Entries </span>
+        </div>
+      </a>
+      <a mat-list-item routerLink="/">
+        <div class="center">
+          <i class="material-icons-outlined grey"> account_tree </i>
+          <span class="grey"> Types </span>
+        </div>
+      </a>
+      <a mat-list-item routerLink="/">
+        <div class="center">
+          <i class="material-icons-outlined grey"> account_balance_wallet </i>
+          <span class="grey"> Budget </span>
+        </div>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
