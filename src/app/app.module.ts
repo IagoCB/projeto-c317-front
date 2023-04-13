@@ -16,6 +16,7 @@ import { DashboardComponent } from "./views/dashboard/dashboard.component";
 import { EntryListComponent } from "./components/entry-list/entry-list.component";
 
 import { MatTableModule } from "@angular/material/table";
+import { LabelComponent } from './components/modal/label/label.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { MatTableModule } from "@angular/material/table";
     EntryComponent,
     DashboardComponent,
     EntryListComponent,
+    LabelComponent,
   ],
   imports: [
     BrowserModule,
