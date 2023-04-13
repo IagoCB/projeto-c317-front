@@ -1,0 +1,33 @@
+<div class="modal">
+  <app-label-edit
+    title="Fill your new entry"
+    subtitle="Fill with the data of your entry, this will be added to your month list"
+  >
+    <form class="entry-form" [formGroup]="entryForm">
+      <mat-form-field appearance="outline">
+        <mat-label>Entry Name</mat-label>
+        <input matInput formControlName="entryName" name="entryName" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Entry Date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="entryDate" name="entryDate" />
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Entry Value</mat-label>
+        <input matInput formControlName="entryValue" name="entryValue" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Select me</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let value of entryClassification" [value]="value">{{ value }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Entry Description</mat-label>
+        <textarea matInput formControlName="entryDescription" name="entryDescription"></textarea>
+      </mat-form-field>
+    </form>
+  </app-label-edit>
+</div>

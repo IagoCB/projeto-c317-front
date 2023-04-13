@@ -1,14 +1,18 @@
 <div class="sub-header">
-  <button mat-raised-button class="newEntryButton">
+  <button mat-raised-button class="newEntryButton" (click)="addEntry()">
     <span> New entry </span>
   </button>
   <div class="date-filter">
     <div class="filter">
-      <input class="date-field" type="date" value="2023-03-01" />
-      <i class="material-icons-outlined grey">
-        <span class="arrow"> arrow_forward </span>
-      </i>
-      <input class="date-field" type="date" value="2023-04-01" />
+      <mat-form-field appearance="outline" class="date">
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate placeholder="Start date" />
+          <input matEndDate placeholder="End date" />
+        </mat-date-range-input>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
     </div>
     <button mat-raised-button class="filterButton">
       <span> Filter </span>

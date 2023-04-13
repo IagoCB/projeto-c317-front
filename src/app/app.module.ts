@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { NgModule, LOCALE_ID } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 
 import { AppRoutingModule } from "./app-routing.module";
@@ -16,7 +16,16 @@ import { DashboardComponent } from "./views/dashboard/dashboard.component";
 import { EntryListComponent } from "./components/entry-list/entry-list.component";
 
 import { MatTableModule } from "@angular/material/table";
-import { LabelComponent } from './components/label/label.component';
+import { LabelComponent } from "./components/label/label.component";
+import { NewEntryModalComponent } from "./components/modal/new-entry-modal/new-entry-modal.component";
+import { MatDialogModule } from "@angular/material/dialog";
+import { LabelEditComponent } from "./components/label-edit/label-edit.component";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MatNativeDateModule } from "@angular/material/core";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatInputModule } from "@angular/material/input";
+import { MatSelectModule } from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -27,6 +36,8 @@ import { LabelComponent } from './components/label/label.component';
     DashboardComponent,
     EntryListComponent,
     LabelComponent,
+    NewEntryModalComponent,
+    LabelEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,8 +48,21 @@ import { LabelComponent } from './components/label/label.component';
     MatSidenavModule,
     MatListModule,
     MatTableModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatSelectModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: LOCALE_ID,
+      useValue: "pt-BR",
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -26,3 +26,8 @@ body {
   background-color: #e35e6b;
   color: #fff;
 }
+
+.mat-mdc-dialog-container {
+  --mdc-dialog-container-color: none;
+  --mdc-dialog-container-elevation: none;
+}
