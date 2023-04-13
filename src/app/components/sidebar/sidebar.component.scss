@@ -5,15 +5,12 @@
 .sidenav {
   background-color: #fff;
   width: 240px;
-  box-shadow: 7px 4px 21px 13px rgba(0, 0, 0, 0.25);
+  box-shadow: 7px 4px 21px 10px rgba(0, 0, 0, 0.25);
+  left: 0;
 }
 
 .grey {
   color: #a9afbb;
-}
-
-.sidenav {
-  left: 0;
 }
 
 .sidenav i {
@@ -28,6 +25,7 @@
 .content {
   padding: 32px;
   background-color: #eee;
+  height: 100vh;
 }
 
 .nav-list {
