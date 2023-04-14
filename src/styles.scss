@@ -32,3 +32,20 @@ body {
   --mdc-dialog-container-color: none;
   --mdc-dialog-container-elevation: none;
 }
+
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 1px rgb(255, 255, 255);
+    background-color: linear-gradient(225.55deg, #8e24aa 0%, #ab47bc 100%);
+    border-radius: 1px;
+    width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(225.55deg, #8e24aa 0%, #ab47bc 100%);
+    border-radius: 1px;
+}
