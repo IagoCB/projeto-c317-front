@@ -1,0 +1,24 @@
+<div class="sub-header">
+  <button mat-raised-button class="newEntryButton" (click)="addEntry()">
+    <span> New entry </span>
+  </button>
+  <div class="date-filter">
+    <div class="filter">
+      <mat-form-field appearance="outline" class="date">
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate placeholder="Start date" />
+          <input matEndDate placeholder="End date" />
+        </mat-date-range-input>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+    </div>
+    <button mat-raised-button class="filterButton">
+      <span> Filter </span>
+    </button>
+  </div>
+</div>
+<app-label title="Entry table" subtitle="Your entries is located here!">
+  <app-entry-list class="entry-list"></app-entry-list>
+</app-label>
