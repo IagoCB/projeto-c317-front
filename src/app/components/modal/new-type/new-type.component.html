@@ -1,0 +1,25 @@
+<div class="modal">
+  <app-label-edit title="Fill your new type" subtitle="Fill with the data of your type">
+    <form class="style-form" [formGroup]="typeForm">
+      <div class="form-row">
+        <mat-form-field appearance="outline">
+          <mat-label>Type Name</mat-label>
+          <input matInput formControlName="typeName" name="typeName" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Type Portion</mat-label>
+          <mat-icon matSuffix class="icon">percent</mat-icon>
+          <input type="number" max="100" min="0" matInput formControlName="typePortion" name="typePortion" />
+        </mat-form-field>
+      </div>
+    </form>
+    <div class="buttons" (click)="cancel()">
+      <button mat-raised-button class="cancel-button">
+        <span> Cancel </span>
+      </button>
+      <button mat-raised-button class="confirm-button">
+        <span> Confirm </span>
+      </button>
+    </div>
+  </app-label-edit>
+</div>

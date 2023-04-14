@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { Entry } from "../entry.model";
+import { Entry } from "../../utils/model/entry.model";
 
 @Component({
   selector: "app-entry-list",

@@ -1,17 +1,16 @@
 import { Component } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
-import { NewEntryModalComponent } from "src/app/components/modal/new-entry/new-entry-modal.component";
+import { NewTypeComponent } from "src/app/components/modal/new-type/new-type.component";
 
 @Component({
-  selector: "app-entry",
-  templateUrl: "./entry.component.html",
-  styleUrls: ["./entry.component.scss"],
+  selector: "app-type",
+  templateUrl: "./type.component.html",
+  styleUrls: ["./type.component.scss"],
 })
-export class EntryComponent {
+export class TypeComponent {
   constructor(public dialog: MatDialog) {}
-
-  addEntry(): void {
-    const dialogRef = this.dialog.open(NewEntryModalComponent, {
+  addType(): void {
+    const dialogRef = this.dialog.open(NewTypeComponent, {
       width: "auto",
       minWidth: 900,
       minHeight: 250,
