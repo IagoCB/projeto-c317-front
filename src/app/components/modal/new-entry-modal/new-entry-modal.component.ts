@@ -15,7 +15,7 @@ export class NewEntryModalComponent {
 
   ngOnInit(): void {
     this.entryForm = this.fb.group({
-      entryName: [""],
+      entryName: ["", [Validators.required]],
       entryDate: ["", [Validators.required]],
       entryValue: ["", [Validators.required]],
       entryDescription: [""],
