@@ -1,5 +1,6 @@
 .modal {
   background: none;
+  overflow: hidden;
 }
 
 .entry-form {
@@ -58,7 +59,7 @@ mat-form-field {
 }
 
 ::ng-deep .mdc-list-item__primary-text {
-  --mdc-theme-primary:#43a047;
+  --mdc-theme-primary: #43a047;
 }
 
 ::ng-deep .mat-primary .mat-pseudo-checkbox-checked.mat-pseudo-checkbox-minimal::after,

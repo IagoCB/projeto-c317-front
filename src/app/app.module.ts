@@ -17,7 +17,7 @@ import { EntryListComponent } from "./components/entry-list/entry-list.component
 
 import { MatTableModule } from "@angular/material/table";
 import { LabelComponent } from "./components/label/label.component";
-import { NewEntryModalComponent } from "./components/modal/new-entry-modal/new-entry-modal.component";
+import { NewEntryModalComponent } from "./components/modal/new-entry/new-entry-modal.component";
 import { MatDialogModule } from "@angular/material/dialog";
 import { LabelEditComponent } from "./components/label-edit/label-edit.component";
 import { MatFormFieldModule } from "@angular/material/form-field";
@@ -26,6 +26,9 @@ import { MatNativeDateModule } from "@angular/material/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatInputModule } from "@angular/material/input";
 import { MatSelectModule } from "@angular/material/select";
+import { TypeComponent } from "./views/type/type.component";
+import { NewTypeComponent } from "./components/modal/new-type/new-type.component";
+import { TypeListComponent } from './components/type-list/type-list.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,9 @@ import { MatSelectModule } from "@angular/material/select";
     LabelComponent,
     NewEntryModalComponent,
     LabelEditComponent,
+    TypeComponent,
+    NewTypeComponent,
+    TypeListComponent,
   ],
   imports: [
     BrowserModule,
