@@ -1,8 +1,10 @@
-<div class="sub-header">
-  <button mat-raised-button class="new-button" (click)="addType()">
-    <span> New type </span>
-  </button>
+<div class="body">
+  <div class="sub-header">
+    <button mat-raised-button class="new-button" (click)="addType()">
+      <span> New type </span>
+    </button>
+  </div>
+  <app-label title="Type table" subtitle="All your types of expanses is here!">
+    <app-type-list class="list"></app-type-list>
+  </app-label>
 </div>
-<app-label title="Type table" subtitle="All your types of expanses is here!">
-  <app-type-list class="list"></app-type-list>
-</app-label>

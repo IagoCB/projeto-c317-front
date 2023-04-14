@@ -29,7 +29,10 @@ import { MatSelectModule } from "@angular/material/select";
 import { TypeComponent } from "./views/type/type.component";
 import { NewTypeComponent } from "./components/modal/new-type/new-type.component";
 import { TypeListComponent } from './components/type-list/type-list.component';
+import localePt from "@angular/common/locales/pt";
+import { registerLocaleData } from "@angular/common";
 
+registerLocaleData(localePt);
 @NgModule({
   declarations: [
     AppComponent,

@@ -9,8 +9,16 @@ import { Type } from "src/app/utils/model/type.model";
 export class TypeListComponent {
   types: Type[] = [
     {
-      name: "sla",
-      portion: 10,
+      name: "Basic expanses",
+      portion: 50,
+    },
+    {
+      name: "Leisure expenses",
+      portion: 20,
+    },
+    {
+      name: "Education",
+      portion: 30,
     },
   ];
   displayedColumns = ["name", "portion", "action"];
