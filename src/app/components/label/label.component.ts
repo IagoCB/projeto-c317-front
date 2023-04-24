@@ -1,12 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input } from "@angular/core";
 
 @Component({
-  selector: 'app-label',
-  templateUrl: './label.component.html',
-  styleUrls: ['./label.component.scss']
+  selector: "app-label",
+  templateUrl: "./label.component.html",
+  styleUrls: ["./label.component.scss"],
 })
 export class LabelComponent {
-
-  @Input() public title = 'teste'
-  @Input() public subtitle = 'isso é um teste'
+  @Input() public title: string = "";
+  @Input() public subtitle: string = "";
 }

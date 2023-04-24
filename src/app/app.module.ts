@@ -31,6 +31,7 @@ import { NewTypeComponent } from "./components/modal/new-type/new-type.component
 import { TypeListComponent } from './components/type-list/type-list.component';
 import localePt from "@angular/common/locales/pt";
 import { registerLocaleData } from "@angular/common";
+import { InfoComponent } from './components/info/info.component';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -47,6 +48,7 @@ registerLocaleData(localePt);
     TypeComponent,
     NewTypeComponent,
     TypeListComponent,
+    InfoComponent,
   ],
   imports: [
     BrowserModule,

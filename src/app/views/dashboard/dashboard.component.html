@@ -1,1 +1,5 @@
-<p>dashboard works!</p>
+<div class="body">
+  <div class="sub-header" *ngFor="let info of infos">
+    <app-info [name]="info.name" [content]="info.content"></app-info>
+  </div>
+</div>
