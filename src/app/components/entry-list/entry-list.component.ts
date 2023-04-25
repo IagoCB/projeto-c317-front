@@ -133,7 +133,6 @@ export class EntryListComponent {
 
   constructor() {}
   ngOnInit(): void {
-    console.log(this.entries[0].value);
   }
 
   handleDate(date: Date): string {
