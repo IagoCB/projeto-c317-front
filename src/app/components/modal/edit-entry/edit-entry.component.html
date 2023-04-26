@@ -1,17 +1,17 @@
 <div class="modal">
-  <app-label-new
-    title="Fill your new entry"
-    subtitle="Fill with the data of your entry, this will be added to your month list"
+  <app-label-edit
+    title="Edit your entry"
+    subtitle="Edit with the data of your entry, this will be updated to your month list"
   >
     <form class="entry-form" [formGroup]="entryForm">
       <div class="form-row">
         <mat-form-field appearance="outline">
           <mat-label>Entry Name</mat-label>
-          <input matInput formControlName="entryName" name="entryName" />
+          <input matInput formControlName="entryName" name="entryName" [(ngModel)]="entry.name" />
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Entry Date</mat-label>
-          <input matInput [matDatepicker]="picker" formControlName="entryDate" name="entryDate" />
+          <input matInput [matDatepicker]="picker" formControlName="entryDate" name="entryDate" [(ngModel)]="entry.date"/>
           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
@@ -19,7 +19,7 @@
       <div class="form-row">
         <mat-form-field appearance="outline">
           <mat-label>Entry Value</mat-label>
-          <input matInput formControlName="entryValue" name="entryValue" />
+          <input matInput formControlName="entryValue" name="entryValue" [(ngModel)]="entry.value"/>
         </mat-form-field>
         <mat-form-field appearance="outline" required>
           <mat-label>Select me</mat-label>
@@ -30,7 +30,7 @@
       </div>
       <mat-form-field appearance="outline" class="description">
         <mat-label>Entry Description</mat-label>
-        <textarea matInput formControlName="entryDescription" name="entryDescription"></textarea>
+        <textarea matInput formControlName="entryDescription" name="entryDescription" [(ngModel)]="entry.description"></textarea>
       </mat-form-field>
     </form>
     <div class="buttons" (click)="cancel()">
@@ -41,5 +41,5 @@
         <span> Confirm </span>
       </button>
     </div>
-  </app-label-new>
+  </app-label-edit>
 </div>

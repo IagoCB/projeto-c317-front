@@ -1,5 +1,7 @@
 import { Component } from "@angular/core";
 import { Entry } from "../../utils/model/entry.model";
+import { MatDialog } from "@angular/material/dialog";
+import { EditEntryComponent } from "../modal/edit-entry/edit-entry.component";
 
 @Component({
   selector: "app-entry-list",
@@ -131,8 +133,21 @@ export class EntryListComponent {
   ];
   displayedColumns = ["name", "date", "value", "classification", "description", "action"];
 
-  constructor() {}
-  ngOnInit(): void {
+  constructor(public dialog: MatDialog) {}
+  ngOnInit(): void {}
+
+  editEntry(entry: Entry): void {
+    const dialogRef = this.dialog.open(EditEntryComponent, {
+      width: "auto",
+      minWidth: 900,
+      minHeight: 250,
+      height: "auto",
+    });
+
+    dialogRef.componentInstance.entry = entry;
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log("The dialog was closed");
+    });
   }
 
   handleDate(date: Date): string {
