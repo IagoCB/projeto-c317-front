@@ -32,6 +32,8 @@ import { TypeListComponent } from './components/type-list/type-list.component';
 import localePt from "@angular/common/locales/pt";
 import { registerLocaleData } from "@angular/common";
 import { InfoComponent } from './components/info/info.component';
+import { EditEntryComponent } from './components/modal/edit-entry/edit-entry.component';
+import { LabelNewComponent } from './components/label-new/label-new.component';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -49,6 +51,8 @@ registerLocaleData(localePt);
     NewTypeComponent,
     TypeListComponent,
     InfoComponent,
+    EditEntryComponent,
+    LabelNewComponent,
   ],
   imports: [
     BrowserModule,
