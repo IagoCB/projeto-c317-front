@@ -1,5 +1,7 @@
 import { Component } from "@angular/core";
 import { Type } from "src/app/utils/model/type.model";
+import { EditTypeComponent } from "../modal/edit-type/edit-type.component";
+import { MatDialog } from "@angular/material/dialog";
 
 @Component({
   selector: "app-type-list",
@@ -23,7 +25,17 @@ export class TypeListComponent {
   ];
   displayedColumns = ["name", "portion", "action"];
 
-  constructor() {}
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {}
+
+  editType(type: Type): void {
+    this.dialog.open(EditTypeComponent, {
+      width: "auto",
+      minWidth: 900,
+      minHeight: 250,
+      height: "auto",
+      data: type,
+    });
+  }
 }

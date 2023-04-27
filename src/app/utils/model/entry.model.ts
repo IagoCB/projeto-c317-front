@@ -2,7 +2,7 @@ export interface Entry {
   id?: number;
   name: string;
   date: string;
-  value: number | null;
+  value?: number;
   classification: string;
   description: string;
 }

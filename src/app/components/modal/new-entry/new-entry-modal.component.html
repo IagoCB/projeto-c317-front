@@ -1,5 +1,5 @@
 <div class="modal">
-  <app-label-new
+  <app-label-edit
     title="Fill your new entry"
     subtitle="Fill with the data of your entry, this will be added to your month list"
   >
@@ -34,12 +34,12 @@
       </mat-form-field>
     </form>
     <div class="buttons">
-      <button mat-raised-button class="cancelButton"  (click)="cancel()">
+      <button mat-raised-button class="cancelButton" (click)="cancel()">
         <span> Cancel </span>
       </button>
       <button mat-raised-button class="confirmButton" (click)="save()">
         <span> Confirm </span>
       </button>
     </div>
-  </app-label-new>
+  </app-label-edit>
 </div>

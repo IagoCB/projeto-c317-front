@@ -7,11 +7,17 @@
       <div class="form-row">
         <mat-form-field appearance="outline">
           <mat-label>Entry Name</mat-label>
-          <input matInput formControlName="entryName" name="entryName" [(ngModel)]="entry.name" />
+          <input matInput formControlName="entryName" name="entryName" [(ngModel)]="name" />
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Entry Date</mat-label>
-          <input matInput [matDatepicker]="picker" formControlName="entryDate" name="entryDate" [(ngModel)]="dateModified"/>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="entryDate"
+            name="entryDate"
+            [(ngModel)]="dateModified"
+          />
           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
@@ -19,25 +25,30 @@
       <div class="form-row">
         <mat-form-field appearance="outline">
           <mat-label>Entry Value</mat-label>
-          <input matInput formControlName="entryValue" name="entryValue" [(ngModel)]="entry.value"/>
+          <input matInput formControlName="entryValue" name="entryValue" [(ngModel)]="value" />
         </mat-form-field>
         <mat-form-field appearance="outline" required>
           <mat-label>Select me</mat-label>
-          <mat-select>
+          <mat-select [(ngModel)]="classification" [ngModelOptions]="{ standalone: true }">
             <mat-option *ngFor="let value of entryClassification" [value]="value">{{ value }}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
       <mat-form-field appearance="outline" class="description">
         <mat-label>Entry Description</mat-label>
-        <textarea matInput formControlName="entryDescription" name="entryDescription" [(ngModel)]="entry.description"></textarea>
+        <textarea
+          matInput
+          formControlName="entryDescription"
+          name="entryDescription"
+          [(ngModel)]="description"
+        ></textarea>
       </mat-form-field>
     </form>
-    <div class="buttons" (click)="cancel()">
-      <button mat-raised-button class="cancelButton">
+    <div class="buttons">
+      <button mat-raised-button class="cancelButton" (click)="cancel()">
         <span> Cancel </span>
       </button>
-      <button mat-raised-button class="confirmButton">
+      <button mat-raised-button class="confirmButton" (click)="save()">
         <span> Confirm </span>
       </button>
     </div>

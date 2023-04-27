@@ -137,16 +137,12 @@ export class EntryListComponent {
   ngOnInit(): void {}
 
   editEntry(entry: Entry): void {
-    const dialogRef = this.dialog.open(EditEntryComponent, {
+    this.dialog.open(EditEntryComponent, {
       width: "auto",
       minWidth: 900,
       minHeight: 250,
       height: "auto",
-    });
-
-    dialogRef.componentInstance.entry = entry;
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log("The dialog was closed");
+      data: entry,
     });
   }
 
@@ -158,12 +154,10 @@ export class EntryListComponent {
     if (+day < 10) {
       day = `0${day}`;
     }
-    console.log(day)
 
     if (+month < 10) {
-      month= `0${month}`;
+      month = `0${month}`;
     }
-    console.log(month);
 
     return `${day}/${month}/${year}`;
   }

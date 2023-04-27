@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { DashboardComponent } from "./dashboard.component";
+import { EditTypeComponent } from "./edit-type.component";
 
-describe("DashboardComponent", () => {
-  let component: DashboardComponent;
-  let fixture: ComponentFixture<DashboardComponent>;
+describe("EditTypeComponent", () => {
+  let component: EditTypeComponent;
+  let fixture: ComponentFixture<EditTypeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DashboardComponent],
+      declarations: [EditTypeComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(DashboardComponent);
+    fixture = TestBed.createComponent(EditTypeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

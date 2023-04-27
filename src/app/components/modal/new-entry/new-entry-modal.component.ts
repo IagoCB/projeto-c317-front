@@ -9,7 +9,7 @@ import { MatDialogRef } from "@angular/material/dialog";
 })
 export class NewEntryModalComponent {
   public entryForm!: FormGroup;
-  entryClassification: Array<String> = ["a", "b", "c"];
+  entryClassification: Array<string> = ["Basic expanses", "Leisure expenses", "Education"];
 
   constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<NewEntryModalComponent>) {}
 
