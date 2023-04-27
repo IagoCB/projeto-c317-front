@@ -25,4 +25,10 @@ export class NewEntryModalComponent {
   cancel(): void {
     this.dialogRef.close();
   }
+
+  save(): void {
+    const chartFormObject = this.entryForm.getRawValue();
+    console.log(chartFormObject.entryDate);
+    this.dialogRef.close();
+  }
 }

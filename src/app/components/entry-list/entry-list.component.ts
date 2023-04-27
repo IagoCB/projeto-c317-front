@@ -151,9 +151,19 @@ export class EntryListComponent {
   }
 
   handleDate(date: Date): string {
-    const day = date.getDate();
-    const month = date.getMonth();
+    let day = date.getDate().toString();
+    let month = date.getMonth().toString();
     const year = date.getFullYear();
+
+    if (+day < 10) {
+      day = `0${day}`;
+    }
+    console.log(day)
+
+    if (+month < 10) {
+      month= `0${month}`;
+    }
+    console.log(month);
 
     return `${day}/${month}/${year}`;
   }

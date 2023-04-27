@@ -11,7 +11,7 @@
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Entry Date</mat-label>
-          <input matInput [matDatepicker]="picker" formControlName="entryDate" name="entryDate" [(ngModel)]="entry.date"/>
+          <input matInput [matDatepicker]="picker" formControlName="entryDate" name="entryDate" [(ngModel)]="dateModified"/>
           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>

@@ -33,11 +33,11 @@
         <textarea matInput formControlName="entryDescription" name="entryDescription"></textarea>
       </mat-form-field>
     </form>
-    <div class="buttons" (click)="cancel()">
-      <button mat-raised-button class="cancelButton">
+    <div class="buttons">
+      <button mat-raised-button class="cancelButton"  (click)="cancel()">
         <span> Cancel </span>
       </button>
-      <button mat-raised-button class="confirmButton">
+      <button mat-raised-button class="confirmButton" (click)="save()">
         <span> Confirm </span>
       </button>
     </div>

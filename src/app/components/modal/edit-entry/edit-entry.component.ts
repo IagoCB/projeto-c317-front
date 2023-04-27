@@ -13,6 +13,7 @@ export class EditEntryComponent {
   entry!: Entry;
   public entryForm!: FormGroup;
   entryClassification: Array<String> = ["a", "b", "c"];
+  public dateModified!: Date;
 
   constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<EditEntryComponent>) {}
 
@@ -23,10 +24,18 @@ export class EditEntryComponent {
       entryValue: ["", [Validators.required]],
       entryDescription: [""],
     });
+    this.dateModified = this.handleDate(this.entry.date);
     console.log(this.entry);
+    console.log(this.handleDate("24/02/2022"));
   }
 
   cancel(): void {
     this.dialogRef.close();
+  }
+
+  handleDate(dateString: String): Date {
+    const dateArray = dateString.split("/");
+    const convertedDate = new Date(dateArray[1] + "/" + dateArray[0] + "/" + dateArray[2]);
+    return new Date(convertedDate);
   }
 }
