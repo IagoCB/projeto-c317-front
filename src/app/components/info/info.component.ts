@@ -9,6 +9,7 @@ export class InfoComponent {
   @Input() public name: string = "";
   @Input() public content: string = "";
   @Input() public color: string[] = [""];
+  @Input() public iconName: String = "";
 
   setMyStyles() {
     let styles = {

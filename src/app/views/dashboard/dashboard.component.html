@@ -1,7 +1,7 @@
-<div style="display: flex; flex-direction: column; gap: 200px; height: 100%">
+<div class="body">
   <div class="body-header">
     <div class="sub-header" *ngFor="let info of infos">
-      <app-info [name]="info.name" [content]="info.content" [color]="info.color"></app-info>
+      <app-info [name]="info.name" [content]="info.content" [color]="info.color" [iconName]="info.iconName"></app-info>
     </div>
   </div>
   <div class="body-footer">

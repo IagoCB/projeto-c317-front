@@ -1,6 +1,10 @@
 <div class="b">
   <div class="back">
-    <div class="color" [ngStyle]="setMyStyles()"></div>
+    <div class="color" [ngStyle]="setMyStyles()">
+      <mat-icon class="icon" *ngIf="iconName" class="material-icons-outlined icon">
+        {{ iconName }}
+      </mat-icon>
+    </div>
     <h2>{{ name }}</h2>
     <h1>{{ content }}</h1>
   </div>

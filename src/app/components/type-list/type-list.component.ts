@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { Type } from "src/app/utils/model/type.model";
 import { EditTypeComponent } from "../modal/edit-type/edit-type.component";
 import { MatDialog } from "@angular/material/dialog";
+import { DeleteTypeComponent } from "../modal/delete-type/delete-type.component";
 
 @Component({
   selector: "app-type-list",
@@ -31,6 +32,16 @@ export class TypeListComponent {
 
   editType(type: Type): void {
     this.dialog.open(EditTypeComponent, {
+      width: "auto",
+      minWidth: 900,
+      minHeight: 250,
+      height: "auto",
+      data: type,
+    });
+  }
+
+  deleteType(type: Type): void {
+    this.dialog.open(DeleteTypeComponent, {
       width: "auto",
       minWidth: 900,
       minHeight: 250,
