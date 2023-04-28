@@ -49,8 +49,6 @@ export class EditEntryComponent {
       classification: this.classification,
       description: this.description,
     };
-
-    console.log(this.entry);
   }
 
   handleDate(dateString: string): Date {

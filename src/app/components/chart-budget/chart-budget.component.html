@@ -1,0 +1,12 @@
+<div class="b">
+  <div class="back">
+    <div echarts [options]="chartOption" class="chart"></div>
+    <div class="legend">
+      <h1>Budget</h1>
+      <div *ngFor="let type of typesOfBudget">
+        <div class="ball" [ngStyle]="setMyStyles(type)"></div>
+        <p>{{ type.name }}</p>
+      </div>
+    </div>
+  </div>
+</div>

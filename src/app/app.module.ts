@@ -35,6 +35,8 @@ import { InfoComponent } from "./components/info/info.component";
 import { EditEntryComponent } from "./components/modal/edit-entry/edit-entry.component";
 import { LabelNewComponent } from "./components/label-new/label-new.component";
 import { EditTypeComponent } from "./components/modal/edit-type/edit-type.component";
+import { ChartBudgetComponent } from "./components/chart-budget/chart-budget.component";
+import { NgxEchartsModule } from "ngx-echarts";
 
 registerLocaleData(localePt);
 @NgModule({
@@ -55,6 +57,7 @@ registerLocaleData(localePt);
     EditEntryComponent,
     LabelNewComponent,
     EditTypeComponent,
+    ChartBudgetComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,6 +76,9 @@ registerLocaleData(localePt);
     FormsModule,
     ReactiveFormsModule,
     MatSelectModule,
+    NgxEchartsModule.forRoot({
+      echarts: () => import("echarts"),
+    }),
   ],
   providers: [
     {

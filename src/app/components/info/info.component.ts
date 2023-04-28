@@ -14,7 +14,6 @@ export class InfoComponent {
     let styles = {
       background: "linear-gradient(225.55deg, " + this.color[0] + " 0%, " + this.color[1] + " 100%)",
     };
-    console.log(styles);
     return styles;
   }
 }
