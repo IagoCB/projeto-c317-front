@@ -1,23 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { TypeListComponent } from './type-list.component';
+import { TypeListComponent } from "./type-list.component";
 
-describe('TypeListComponent', () => {
+describe("TypeListComponent", () => {
   let component: TypeListComponent;
   let fixture: ComponentFixture<TypeListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TypeListComponent ]
-    })
-    .compileComponents();
+      declarations: [TypeListComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(TypeListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

@@ -9,7 +9,7 @@ import { MatDialogRef } from "@angular/material/dialog";
 })
 export class NewEntryModalComponent {
   public entryForm!: FormGroup;
-  entryClassification: Array<String> = ["a", "b", "c"];
+  entryClassification: Array<string> = ["Basic expanses", "Leisure expenses", "Education"];
 
   constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<NewEntryModalComponent>) {}
 
@@ -23,6 +23,12 @@ export class NewEntryModalComponent {
   }
 
   cancel(): void {
+    this.dialogRef.close();
+  }
+
+  save(): void {
+    const chartFormObject = this.entryForm.getRawValue();
+    console.log(chartFormObject.entryDate);
     this.dialogRef.close();
   }
 }

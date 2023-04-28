@@ -1,5 +1,12 @@
-<div class="body">
-  <div class="sub-header" *ngFor="let info of infos">
-    <app-info [name]="info.name" [content]="info.content"></app-info>
+<div style="display: flex; flex-direction: column; gap: 200px; height: 100%">
+  <div class="body-header">
+    <div class="sub-header" *ngFor="let info of infos">
+      <app-info [name]="info.name" [content]="info.content" [color]="info.color"></app-info>
+    </div>
+  </div>
+  <div class="body-footer">
+    <div class="sub-header">
+      <app-chart-budget></app-chart-budget>
+    </div>
   </div>
 </div>

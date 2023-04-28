@@ -28,10 +28,15 @@ import { MatInputModule } from "@angular/material/input";
 import { MatSelectModule } from "@angular/material/select";
 import { TypeComponent } from "./views/type/type.component";
 import { NewTypeComponent } from "./components/modal/new-type/new-type.component";
-import { TypeListComponent } from './components/type-list/type-list.component';
+import { TypeListComponent } from "./components/type-list/type-list.component";
 import localePt from "@angular/common/locales/pt";
 import { registerLocaleData } from "@angular/common";
-import { InfoComponent } from './components/info/info.component';
+import { InfoComponent } from "./components/info/info.component";
+import { EditEntryComponent } from "./components/modal/edit-entry/edit-entry.component";
+import { LabelNewComponent } from "./components/label-new/label-new.component";
+import { EditTypeComponent } from "./components/modal/edit-type/edit-type.component";
+import { ChartBudgetComponent } from "./components/chart-budget/chart-budget.component";
+import { NgxEchartsModule } from "ngx-echarts";
 
 registerLocaleData(localePt);
 @NgModule({
@@ -49,6 +54,10 @@ registerLocaleData(localePt);
     NewTypeComponent,
     TypeListComponent,
     InfoComponent,
+    EditEntryComponent,
+    LabelNewComponent,
+    EditTypeComponent,
+    ChartBudgetComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,6 +76,9 @@ registerLocaleData(localePt);
     FormsModule,
     ReactiveFormsModule,
     MatSelectModule,
+    NgxEchartsModule.forRoot({
+      echarts: () => import("echarts"),
+    }),
   ],
   providers: [
     {

@@ -1,5 +1,7 @@
 import { Component } from "@angular/core";
 import { Entry } from "../../utils/model/entry.model";
+import { MatDialog } from "@angular/material/dialog";
+import { EditEntryComponent } from "../modal/edit-entry/edit-entry.component";
 
 @Component({
   selector: "app-entry-list",
@@ -131,14 +133,31 @@ export class EntryListComponent {
   ];
   displayedColumns = ["name", "date", "value", "classification", "description", "action"];
 
-  constructor() {}
-  ngOnInit(): void {
+  constructor(public dialog: MatDialog) {}
+  ngOnInit(): void {}
+
+  editEntry(entry: Entry): void {
+    this.dialog.open(EditEntryComponent, {
+      width: "auto",
+      minWidth: 900,
+      minHeight: 250,
+      height: "auto",
+      data: entry,
+    });
   }
 
   handleDate(date: Date): string {
-    const day = date.getDate();
-    const month = date.getMonth();
+    let day = date.getDate().toString();
+    let month = date.getMonth().toString();
     const year = date.getFullYear();
+
+    if (+day < 10) {
+      day = `0${day}`;
+    }
+
+    if (+month < 10) {
+      month = `0${month}`;
+    }
 
     return `${day}/${month}/${year}`;
   }

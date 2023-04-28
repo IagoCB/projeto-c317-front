@@ -28,7 +28,7 @@
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef>Actions</th>
       <td mat-cell *matCellDef="let row">
-        <a routerLink="" class="edit">
+        <a (click)="editEntry(row)" class="edit">
           <i class="material-icons fa-gradient fa-font-awesome"> edit </i>
         </a>
         <a routerLink="" class="delete">
