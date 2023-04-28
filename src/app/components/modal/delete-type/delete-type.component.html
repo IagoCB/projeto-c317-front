@@ -1,0 +1,33 @@
+<div class="modal">
+  <app-label-delete title="Detele this type?" subtitle="this will delete permanently this type">
+    <form class="style-form" [formGroup]="typeForm">
+      <div class="form-row">
+        <mat-form-field appearance="outline">
+          <mat-label>Type Name</mat-label>
+          <input matInput formControlName="typeName" name="typeName" [(ngModel)]="type.name" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Type Portion</mat-label>
+          <mat-icon matSuffix class="icon">percent</mat-icon>
+          <input
+            type="number"
+            max="100"
+            min="0"
+            matInput
+            formControlName="typePortion"
+            name="typePortion"
+            [(ngModel)]="type.portion"
+          />
+        </mat-form-field>
+      </div>
+    </form>
+    <div class="buttons" (click)="cancel()">
+      <button mat-raised-button class="cancel-button">
+        <span> Cancel </span>
+      </button>
+      <button mat-raised-button class="confirm-button">
+        <span> Confirm </span>
+      </button>
+    </div>
+  </app-label-delete>
+</div>

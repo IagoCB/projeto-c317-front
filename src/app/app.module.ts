@@ -37,6 +37,9 @@ import { LabelNewComponent } from "./components/label-new/label-new.component";
 import { EditTypeComponent } from "./components/modal/edit-type/edit-type.component";
 import { ChartBudgetComponent } from "./components/chart-budget/chart-budget.component";
 import { NgxEchartsModule } from "ngx-echarts";
+import { DeleteEntryComponent } from './components/modal/delete-entry/delete-entry.component';
+import { LabelDeleteComponent } from './components/label-delete/label-delete.component';
+import { DeleteTypeComponent } from './components/modal/delete-type/delete-type.component';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -58,6 +61,9 @@ registerLocaleData(localePt);
     LabelNewComponent,
     EditTypeComponent,
     ChartBudgetComponent,
+    DeleteEntryComponent,
+    LabelDeleteComponent,
+    DeleteTypeComponent,
   ],
   imports: [
     BrowserModule,

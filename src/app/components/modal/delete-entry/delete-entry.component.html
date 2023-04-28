@@ -1,0 +1,56 @@
+<div class="modal">
+  <app-label-delete
+    title="Detele this entry?"
+    subtitle="this will delete permanently this entry"
+  >
+    <form class="entry-form" [formGroup]="entryForm">
+      <div class="form-row">
+        <mat-form-field appearance="outline">
+          <mat-label>Entry Name</mat-label>
+          <input matInput formControlName="entryName" name="entryName" [(ngModel)]="entry.name"/>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Entry Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="entryDate"
+            name="entryDate"
+            [(ngModel)]="dateModified"
+          />
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="form-row">
+        <mat-form-field appearance="outline">
+          <mat-label>Entry Value</mat-label>
+          <input matInput formControlName="entryValue" name="entryValue" [(ngModel)]="entry.value" />
+        </mat-form-field>
+        <mat-form-field appearance="outline" required>
+          <mat-label>Select me</mat-label>
+          <mat-select [(ngModel)]="entry.classification" [ngModelOptions]="{ standalone: true }" disabled>
+            <mat-option *ngFor="let value of entryClassification" [value]="value">{{ value }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <mat-form-field appearance="outline" class="description">
+        <mat-label>Entry Description</mat-label>
+        <textarea
+          matInput
+          formControlName="entryDescription"
+          name="entryDescription"
+          [(ngModel)]="entry.description"
+        ></textarea>
+      </mat-form-field>
+    </form>
+    <div class="buttons">
+      <button mat-raised-button class="cancelButton" (click)="cancel()">
+        <span> Cancel </span>
+      </button>
+      <button mat-raised-button class="confirmButton" (click)="save()">
+        <span> Confirm </span>
+      </button>
+    </div>
+  </app-label-delete>
+</div>

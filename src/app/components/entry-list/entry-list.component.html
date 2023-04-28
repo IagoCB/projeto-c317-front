@@ -31,12 +31,11 @@
         <a (click)="editEntry(row)" class="edit">
           <i class="material-icons fa-gradient fa-font-awesome"> edit </i>
         </a>
-        <a routerLink="" class="delete">
+        <a (click)="deleteEntry(row)" class="delete">
           <i class="material-icons"> delete </i>
         </a>
       </td>
     </ng-container>
-
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>

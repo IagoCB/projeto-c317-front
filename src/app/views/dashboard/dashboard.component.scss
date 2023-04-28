@@ -1,3 +1,10 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 200px;
+  height: 100%;
+}
+
 .body-header {
   display: flex;
   flex-direction: row;

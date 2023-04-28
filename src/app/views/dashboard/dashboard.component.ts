@@ -9,24 +9,28 @@ import { Info } from "src/app/utils/model/info.model";
 export class DashboardComponent {
   infos: Info[] = [
     {
-      name: "teste 1",
-      content: "teste content 1",
+      name: "Future outcomes",
+      content: "R$ 2540,00",
       color: ["#fb8c00", "#ffa726"],
+      iconName: "file_upload",
     },
     {
-      name: "teste 2",
-      content: "teste content 2",
+      name: "Month income",
+      content: "R$ 6200,00",
       color: ["#8e24aa", "#ab47bc"],
+      iconName: "file_download",
     },
     {
-      name: "teste 3",
-      content: "teste content 3",
+      name: "Status",
+      content: "Your budget is positive this month",
       color: ["#43a047", "#66bb6a"],
+      iconName: "download_done",
     },
     {
-      name: "teste 4",
-      content: "teste content 4",
+      name: "BBAS3",
+      content: "This stock incresed by 0.8% today",
       color: ["#3a66ff ", "#6b8cff "],
+      iconName: "insights",
     },
   ];
 }

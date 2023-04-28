@@ -12,6 +12,10 @@ table {
   cursor: pointer;
 }
 
+.delete {
+  cursor: pointer;
+}
+
 .edit > i {
   background: -moz-linear-gradient(top, #e72c83 0%, #a742c6 100%);
   background: -webkit-linear-gradient(top, #e72c83 0%, #a742c6 100%);
