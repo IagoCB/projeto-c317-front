@@ -1,0 +1,31 @@
+<div class="b">
+  <div class="back">
+    <div class="label">
+      <h1>{{ title }}</h1>
+    </div>
+    <form class="infos" [formGroup]="incomeForm">
+      <div>
+        <h2>Expected Income</h2>
+        <mat-form-field appearance="outline">
+          <span matPrefix>&nbsp; R$</span>
+          <input matInput type="number" formControlName="income" name="income" />
+        </mat-form-field>
+      </div>
+      <div>
+        <h2>Debts</h2>
+        <mat-form-field appearance="outline">
+          <span matPrefix>&nbsp; R$</span>
+          <input matInput type="number" formControlName="debts" name="debts" />
+        </mat-form-field>
+      </div>
+      <div>
+        <h2>Real Income</h2>
+        <mat-form-field appearance="outline">
+          <span matPrefix>&nbsp; R$</span>
+          <input matInput formControlName="realIncome" name="realIncome" />
+        </mat-form-field>
+      </div>
+    </form>
+    <div echarts [options]="chartOption" [merge]="mergeOption" class="chart"></div>
+  </div>
+</div>
