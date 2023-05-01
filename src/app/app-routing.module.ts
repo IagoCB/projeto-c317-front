@@ -3,6 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { DashboardComponent } from "./views/dashboard/dashboard.component";
 import { EntryComponent } from "./views/entry/entry.component";
 import { TypeComponent } from "./views/type/type.component";
+import { BudgetComponent } from "./views/budget/budget.component";
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: "type",
     component: TypeComponent,
+  },
+  {
+    path: "budget",
+    component: BudgetComponent,
   },
 ];
 

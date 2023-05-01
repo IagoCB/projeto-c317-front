@@ -40,6 +40,9 @@ import { NgxEchartsModule } from "ngx-echarts";
 import { DeleteEntryComponent } from './components/modal/delete-entry/delete-entry.component';
 import { LabelDeleteComponent } from './components/label-delete/label-delete.component';
 import { DeleteTypeComponent } from './components/modal/delete-type/delete-type.component';
+import { BudgetComponent } from './views/budget/budget.component';
+import { ChartBudgetMainComponent } from './components/chart-budget-main/chart-budget-main.component';
+import { MonthlyFollowUpComponent } from './components/monthly-follow-up/monthly-follow-up.component';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -64,6 +67,9 @@ registerLocaleData(localePt);
     DeleteEntryComponent,
     LabelDeleteComponent,
     DeleteTypeComponent,
+    BudgetComponent,
+    ChartBudgetMainComponent,
+    MonthlyFollowUpComponent,
   ],
   imports: [
     BrowserModule,
