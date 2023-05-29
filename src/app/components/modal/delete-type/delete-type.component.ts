@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { EditTypeComponent } from "../edit-type/edit-type.component";
 import { Type } from "src/app/utils/model/type.model";
+import { TypeService } from "src/app/utils/service/type.service";
 
 @Component({
   selector: "app-delete-type",
@@ -16,7 +17,8 @@ export class DeleteTypeComponent {
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<EditTypeComponent>,
     @Inject(MAT_DIALOG_DATA)
-    public type: Type
+    public type: Type,
+    private typeService: TypeService
   ) {}
 
   ngOnInit(): void {
@@ -29,6 +31,12 @@ export class DeleteTypeComponent {
   }
 
   cancel(): void {
+    this.dialogRef.close();
+  }
+
+  delete(): void {
+    console.log(this.type);
+    this.typeService.deleteType(this.type).subscribe();
     this.dialogRef.close();
   }
 }
