@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatDialogRef } from "@angular/material/dialog";
+import { EntryService } from "src/app/utils/service/entry.service";
 
 @Component({
   selector: "app-new-entry-modal",
@@ -11,14 +12,15 @@ export class NewEntryModalComponent {
   public entryForm!: FormGroup;
   entryClassification: Array<string> = ["Basic expanses", "Leisure expenses", "Education"];
 
-  constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<NewEntryModalComponent>) {}
+  constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<NewEntryModalComponent>, private entryService: EntryService) {}
 
   ngOnInit(): void {
     this.entryForm = this.fb.group({
-      entryName: ["", [Validators.required]],
-      entryDate: ["", [Validators.required]],
-      entryValue: ["", [Validators.required]],
-      entryDescription: [""],
+      name: ["", [Validators.required]],
+      date: ["", [Validators.required]],
+      value: ["", [Validators.required]],
+      classification: ["", [Validators.required]],
+      description: [""],
     });
   }
 
@@ -27,6 +29,13 @@ export class NewEntryModalComponent {
   }
 
   save(): void {
+
+    console.log(this.entryForm.value)
+    //this.entryService.createEntry(this.entryForm).subscribe(() => {
+    //  this.entryService.showMessage('Entry Created')
+    //  this.dialogRef.close();
+    //})
+
     const chartFormObject = this.entryForm.getRawValue();
     console.log(chartFormObject.entryDate);
     this.dialogRef.close();

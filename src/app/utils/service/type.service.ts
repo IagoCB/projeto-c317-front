@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { MatSnackBar } from "@angular/material/snack-bar";
 
@@ -25,7 +25,10 @@ export class TypeService {
   }
 
   createType(Type: Type): Observable<Type> {
-    return this.http.post<Type>(this.baseUrl, Type).pipe(
+
+    const headers = new HttpHeaders().set("Content-Type", "application/json; charset=utf-8");
+
+    return this.http.post<Type>(this.baseUrl, JSON.stringify(Type), { headers: headers }).pipe(
       map((obj) => obj),
       catchError((e) => this.errorHandler(e))
     );

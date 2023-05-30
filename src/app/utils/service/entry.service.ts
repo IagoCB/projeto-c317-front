@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { MatSnackBar } from "@angular/material/snack-bar";
 
@@ -47,7 +47,7 @@ export class EntryService {
   }
 
   updateEntry(Entry: Entry): Observable<Entry> {
-    const url = `${this.baseUrl}/${Entry.id}`;
+    const url = `${this.baseUrl}?id=${Entry.id}`;
     return this.http.put<Entry>(url, Entry).pipe(
       map((obj) => obj),
       catchError((e) => this.errorHandler(e))
@@ -55,7 +55,7 @@ export class EntryService {
   }
 
   deleteEntry(Entry: Entry): Observable<Entry> {
-    const url = `${this.baseUrl}/${Entry.id}`;
+    const url = `${this.baseUrl}?id=${Entry.id}`;
     return this.http.delete<Entry>(url).pipe(
       map((obj) => obj),
       catchError((e) => this.errorHandler(e))

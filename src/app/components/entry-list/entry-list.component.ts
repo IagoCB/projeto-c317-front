@@ -18,6 +18,7 @@ export class EntryListComponent {
   ngOnInit(): void {
     this.entryService.getAllEntrys().subscribe((entries) => {
       this.entries = entries;
+      console.log(this.entries);
     });
   }
 
@@ -41,10 +42,10 @@ export class EntryListComponent {
     });
   }
 
-  handleDate(date: Date): string {
-    let day = date.getDate().toString();
-    let month = date.getMonth().toString();
-    const year = date.getFullYear();
+  handleDate(date: Array<Number>): string {
+    let day = date[2].toString()
+    let month = date[1].toString();
+    const year = date[0].toString();
 
     if (+day < 10) {
       day = `0${day}`;
