@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { MatSnackBar } from "@angular/material/snack-bar";
 
@@ -38,9 +38,25 @@ export class EntryService {
     );
   }
 
+  getFilterEntrys(dates: any): Observable<Entry[]> {
+    console.log("aaaaaaaaaaaaaaaaaaa", dates);
+    return this.http.get(`${this.baseUrl}/filter`, dates).pipe(
+      map((obj) => obj),
+      catchError((e) => this.errorHandler(e))
+    );
+  }
+
   getEntryById(id: number): Observable<Entry> {
     const url = `${this.baseUrl}/${id}`;
     return this.http.get<Entry>(url).pipe(
+      map((obj) => obj),
+      catchError((e) => this.errorHandler(e))
+    );
+  }
+
+  getSpend(year: number, month: number) {
+    const url = `${this.baseUrl}?year=${year}&month=${month}`;
+    return this.http.get(url).pipe(
       map((obj) => obj),
       catchError((e) => this.errorHandler(e))
     );

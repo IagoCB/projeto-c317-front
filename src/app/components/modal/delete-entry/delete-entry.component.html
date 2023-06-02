@@ -1,13 +1,10 @@
 <div class="modal">
-  <app-label-delete
-    title="Detele this entry?"
-    subtitle="this will delete permanently this entry"
-  >
+  <app-label-delete title="Detele this entry?" subtitle="this will delete permanently this entry">
     <form class="entry-form" [formGroup]="entryForm">
       <div class="form-row">
         <mat-form-field appearance="outline">
           <mat-label>Entry Name</mat-label>
-          <input matInput formControlName="entryName" name="entryName" [(ngModel)]="entry.name"/>
+          <input matInput formControlName="entryName" name="entryName" [(ngModel)]="entry.name" />
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Entry Date</mat-label>

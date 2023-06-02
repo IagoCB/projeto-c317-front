@@ -31,7 +31,7 @@ export class NewTypeComponent {
 
   save(): void {
     this.typeService.createType(this.typeForm.value).subscribe(() => {
-      this.typeService.showMessage("Type Criado");
+      this.typeService.showMessage("Type Created");
       this.dialogRef.close();
     });
   }

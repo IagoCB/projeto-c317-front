@@ -33,7 +33,7 @@ export class EditTypeComponent {
   edit(): void {
     this.typeService.updateType(this.type).subscribe((types) => {
       this.type = types;
+      this.dialogRef.close();
     });
-    this.dialogRef.close();
   }
 }

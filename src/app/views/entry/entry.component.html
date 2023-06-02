@@ -5,22 +5,24 @@
     </button>
     <div class="date-filter">
       <div class="filter">
-        <mat-form-field appearance="outline" class="date">
-          <mat-label>Enter a date range</mat-label>
-          <mat-date-range-input [rangePicker]="picker">
-            <input matStartDate placeholder="Start date" />
-            <input matEndDate placeholder="End date" />
-          </mat-date-range-input>
-          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-date-range-picker #picker></mat-date-range-picker>
-        </mat-form-field>
+        <form [formGroup]="form">
+          <mat-form-field appearance="outline" class="date">
+            <mat-label>Enter a date range</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+              <input matStartDate placeholder="Start date" formControlName="startDate" />
+              <input matEndDate placeholder="End date" formControlName="endDate" />
+            </mat-date-range-input>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          </mat-form-field>
+        </form>
       </div>
-      <button mat-raised-button class="filterButton">
+      <button mat-raised-button class="filterButton" (click)="filter()">
         <span> Filter </span>
       </button>
     </div>
   </div>
   <app-label title="Entry table" subtitle="Your entries is located here!">
-    <app-entry-list class="entry-list"></app-entry-list>
+    <app-entry-list [$entriesFilter]="_$entriesFilter.asObservable()" class="entry-list"></app-entry-list>
   </app-label>
 </div>

@@ -1,9 +1,10 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { Entry } from "../../utils/model/entry.model";
 import { MatDialog } from "@angular/material/dialog";
 import { EditEntryComponent } from "../modal/edit-entry/edit-entry.component";
 import { DeleteEntryComponent } from "../modal/delete-entry/delete-entry.component";
 import { EntryService } from "src/app/utils/service/entry.service";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-entry-list",
@@ -11,6 +12,7 @@ import { EntryService } from "src/app/utils/service/entry.service";
   styleUrls: ["./entry-list.component.scss"],
 })
 export class EntryListComponent {
+  @Input() $entriesFilter: Observable<Entry[]> | undefined;
   entries: Entry[] = [];
   displayedColumns = ["name", "date", "value", "classification", "description", "action"];
 
@@ -18,7 +20,7 @@ export class EntryListComponent {
   ngOnInit(): void {
     this.entryService.getAllEntrys().subscribe((entries) => {
       this.entries = entries;
-      console.log(this.entries);
+      this.handleDate();
     });
   }
 
@@ -42,19 +44,21 @@ export class EntryListComponent {
     });
   }
 
-  handleDate(date: Array<Number>): string {
-    let day = date[2].toString()
-    let month = date[1].toString();
-    const year = date[0].toString();
+  handleDate(): void {
+    this.entries.forEach((entries) => {
+      let day = entries.date[2].toString();
+      let month = entries.date[1].toString();
+      const year = entries.date[0].toString();
 
-    if (+day < 10) {
-      day = `0${day}`;
-    }
+      if (+day < 10) {
+        day = `0${day}`;
+      }
 
-    if (+month < 10) {
-      month = `0${month}`;
-    }
+      if (+month < 10) {
+        month = `0${month}`;
+      }
 
-    return `${day}/${month}/${year}`;
+      entries.date = `${day}/${month}/${year}`;
+    });
   }
 }
