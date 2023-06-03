@@ -1,8 +1,10 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { Entry } from "../../utils/model/entry.model";
 import { MatDialog } from "@angular/material/dialog";
 import { EditEntryComponent } from "../modal/edit-entry/edit-entry.component";
 import { DeleteEntryComponent } from "../modal/delete-entry/delete-entry.component";
+import { EntryService } from "src/app/utils/service/entry.service";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-entry-list",
@@ -10,132 +12,29 @@ import { DeleteEntryComponent } from "../modal/delete-entry/delete-entry.compone
   styleUrls: ["./entry-list.component.scss"],
 })
 export class EntryListComponent {
-  entries: Entry[] = [
-    {
-      id: 1,
-      name: "Eletric bill",
-      date: this.handleDate(new Date()),
-      value: 125.5,
-      classification: "Basic expanses",
-      description: "Just a eletric bill",
-    },
-    {
-      id: 2,
-      name: "Water bill",
-      date: this.handleDate(new Date()),
-      value: 77.6,
-      classification: "Basic expanses",
-      description: "Just a water bill",
-    },
-    {
-      id: 3,
-      name: "GTX 4080",
-      date: this.handleDate(new Date()),
-      value: 8799,
-      classification: "Leisure expenses",
-      description: "Graphic cart for computer",
-    },
-    {
-      id: 4,
-      name: "Mouse razer",
-      date: this.handleDate(new Date()),
-      value: 350,
-      classification: "Leisure expenses",
-      description: "",
-    },
-    {
-      id: 5,
-      name: "Rent",
-      date: this.handleDate(new Date()),
-      value: 1456.7,
-      classification: "Basic expanses",
-      description: "Rent for the house",
-    },
-    {
-      id: 6,
-      name: "Eletric bill",
-      date: this.handleDate(new Date()),
-      value: 125.5,
-      classification: "Basic expanses",
-      description: "Just a eletric bill",
-    },
-    {
-      id: 7,
-      name: "Water bill",
-      date: this.handleDate(new Date()),
-      value: 77.6,
-      classification: "Basic expanses",
-      description: "Just a water bill",
-    },
-    {
-      id: 8,
-      name: "GTX 4080",
-      date: this.handleDate(new Date()),
-      value: 8799,
-      classification: "Leisure expenses",
-      description: "Graphic cart for computer",
-    },
-    {
-      id: 9,
-      name: "Mouse razer",
-      date: this.handleDate(new Date()),
-      value: 350,
-      classification: "Leisure expenses",
-      description: "",
-    },
-    {
-      id: 10,
-      name: "Rent",
-      date: this.handleDate(new Date()),
-      value: 1456.7,
-      classification: "Basic expanses",
-      description: "Rent for the house",
-    },
-    {
-      id: 11,
-      name: "Eletric bill",
-      date: this.handleDate(new Date()),
-      value: 125.5,
-      classification: "Basic expanses",
-      description: "Just a eletric bill",
-    },
-    {
-      id: 12,
-      name: "Water bill",
-      date: this.handleDate(new Date()),
-      value: 77.6,
-      classification: "Basic expanses",
-      description: "Just a water bill",
-    },
-    {
-      id: 13,
-      name: "GTX 4080",
-      date: this.handleDate(new Date()),
-      value: 8799,
-      classification: "Leisure expenses",
-      description: "Graphic cart for computer",
-    },
-    {
-      id: 14,
-      name: "Mouse razer",
-      date: this.handleDate(new Date()),
-      value: 350,
-      classification: "Leisure expenses",
-      description: "",
-    },
-    {
-      id: 15,
-      name: "Rent",
-      date: this.handleDate(new Date()),
-      value: 1456.7,
-      classification: "Basic expanses",
-      description: "Rent for the house",
-    },
-  ];
+  @Input() $entriesFilter?: Observable<Entry[]>;
+  entries: Entry[] = [];
+  available = true;
   displayedColumns = ["name", "date", "value", "classification", "description", "action"];
 
-  constructor(public dialog: MatDialog) {}
-  ngOnInit(): void {}
+  constructor(public dialog: MatDialog, private entryService: EntryService) {}
+  ngOnInit(): void {
+    this.$entriesFilter?.subscribe((values) => {
+      this.available = false;
+      setTimeout(() => {
+        this.available = true;
+      }, 500);
+      if (values.length > 0) {
+        this.entries = values;
+        this.handleDate();
+      } else {
+        this.entryService.getAllEntrys().subscribe((entries) => {
+          this.entries = entries;
+          this.handleDate();
+        });
+      }
+    });
+  }
 
   editEntry(entry: Entry): void {
     this.dialog.open(EditEntryComponent, {
@@ -157,19 +56,21 @@ export class EntryListComponent {
     });
   }
 
-  handleDate(date: Date): string {
-    let day = date.getDate().toString();
-    let month = date.getMonth().toString();
-    const year = date.getFullYear();
+  handleDate(): void {
+    this.entries.forEach((entries) => {
+      let day = entries.date[2].toString();
+      let month = entries.date[1].toString();
+      const year = entries.date[0].toString();
 
-    if (+day < 10) {
-      day = `0${day}`;
-    }
+      if (+day < 10) {
+        day = `0${day}`;
+      }
 
-    if (+month < 10) {
-      month = `0${month}`;
-    }
+      if (+month < 10) {
+        month = `0${month}`;
+      }
 
-    return `${day}/${month}/${year}`;
+      entries.date = `${day}/${month}/${year}`;
+    });
   }
 }

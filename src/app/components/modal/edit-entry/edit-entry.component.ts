@@ -2,6 +2,8 @@ import { Component, Inject } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { Entry } from "src/app/utils/model/entry.model";
+import { EntryService } from "src/app/utils/service/entry.service";
+import { TypeService } from "src/app/utils/service/type.service";
 
 @Component({
   selector: "app-edit-entry",
@@ -10,7 +12,7 @@ import { Entry } from "src/app/utils/model/entry.model";
 })
 export class EditEntryComponent {
   entryForm!: FormGroup;
-  entryClassification: Array<string> = ["Basic expanses", "Leisure expenses", "Education"];
+  entryClassification: Array<string> = [];
   dateModified!: Date;
   id?: number = this.entry.id;
   name: string = this.entry.name;
@@ -23,7 +25,9 @@ export class EditEntryComponent {
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<EditEntryComponent>,
     @Inject(MAT_DIALOG_DATA)
-    public entry: Entry
+    public entry: Entry,
+    private entryService: EntryService,
+    private typeService: TypeService
   ) {}
 
   ngOnInit(): void {
@@ -34,21 +38,28 @@ export class EditEntryComponent {
       entryDescription: [""],
     });
     this.dateModified = this.handleDate(this.entry.date);
+    this.typeService.getAllTypes().subscribe((types) => {
+      types.forEach((type) => this.entryClassification.push(type.name));
+    });
   }
 
   cancel(): void {
     this.dialogRef.close();
   }
 
-  save(): void {
-    this.entry = {
+  edit(): void {
+    const entry = {
       id: this.id,
       name: this.name,
-      date: this.date,
+      date: new Date(this.handleDate(this.entry.date)),
       value: this.value,
       classification: this.classification,
       description: this.description,
     };
+    this.entryService.updateEntry(entry).subscribe(() => {
+      this.entryService.showMessage("Entry Edited");
+      this.dialogRef.close();
+    });
   }
 
   handleDate(dateString: string): Date {

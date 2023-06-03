@@ -3,6 +3,7 @@ import { Type } from "src/app/utils/model/type.model";
 import { EditTypeComponent } from "../modal/edit-type/edit-type.component";
 import { MatDialog } from "@angular/material/dialog";
 import { DeleteTypeComponent } from "../modal/delete-type/delete-type.component";
+import { TypeService } from "src/app/utils/service/type.service";
 
 @Component({
   selector: "app-type-list",
@@ -10,25 +11,16 @@ import { DeleteTypeComponent } from "../modal/delete-type/delete-type.component"
   styleUrls: ["./type-list.component.scss"],
 })
 export class TypeListComponent {
-  types: Type[] = [
-    {
-      name: "Basic expanses",
-      portion: 50,
-    },
-    {
-      name: "Leisure expenses",
-      portion: 20,
-    },
-    {
-      name: "Education",
-      portion: 30,
-    },
-  ];
+  types: Type[] = [];
   displayedColumns = ["name", "portion", "action"];
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private typeService: TypeService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.typeService.getAllTypes().subscribe((types) => {
+      this.types = types;
+    });
+  }
 
   editType(type: Type): void {
     this.dialog.open(EditTypeComponent, {

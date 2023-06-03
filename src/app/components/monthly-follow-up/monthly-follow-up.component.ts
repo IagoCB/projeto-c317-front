@@ -1,6 +1,8 @@
 import { Component, Input } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { EChartsOption } from "echarts";
+import { EntryService } from "src/app/utils/service/entry.service";
+import { TypeService } from "src/app/utils/service/type.service";
 
 @Component({
   selector: "app-monthly-follow-up",
@@ -14,38 +16,14 @@ export class MonthlyFollowUpComponent {
     debts: [0],
     realIncome: [{ value: 0, disabled: true }],
   });
-  typesOfBudget = [
-    {
-      name: "Basic expanses",
-      portion: 50,
-      color: ["#fb8c00", "#ffa726"],
-    },
-    {
-      name: "Leisure expenses",
-      portion: 20,
-      color: ["#43a047", "#66bb6a"],
-    },
-    {
-      name: "Education",
-      portion: 30,
-      color: ["#3a66ff ", "#6b8cff "],
-    },
+  typesOfBudget: any = [];
+  colorAux = [
+    ["#fb8c00", "#ffa726"],
+    ["#43a047", "#66bb6a"],
+    ["#3a66ff ", "#6b8cff "],
   ];
-  gastos = [
-    {
-      name: "Basic expanses",
-      value: 1000,
-    },
-    {
-      name: "Leisure expenses",
-      value: 1000,
-    },
-    {
-      name: "Education",
-      value: 1000,
-    },
-  ];
-  colorsArray: string[] = [];
+  spend: { classification: string; value: number }[] = [];
+  colorsArray: string[] = ["#ffa726", "#66bb6a", "#6b8cff"];
   types: string[] = [];
   planned: number[] = [];
   current: number[] = [];
@@ -123,13 +101,17 @@ export class MonthlyFollowUpComponent {
 
   mergeOption: EChartsOption = {};
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private typeService: TypeService, private entryService: EntryService) {}
 
   ngOnInit(): void {
-    this.makeChart();
-  }
-
-  ngOnChanges(): void {
+    const date = new Date();
+    this.typeService.getAllTypes().subscribe((types) => {
+      this.getTypesOfBudget(types, this.colorAux);
+      this.makeChart();
+    });
+    this.entryService.getSpend(date.getFullYear(), date.getMonth()).subscribe((spend) => {
+      this.spend = spend;
+    });
     this.incomeForm.valueChanges.subscribe(() => {
       const income = this.incomeForm.get("income")!.value;
       const debts = this.incomeForm.get("debts")!.value;
@@ -142,32 +124,39 @@ export class MonthlyFollowUpComponent {
   }
 
   makeChart() {
-    this.typesOfBudget.map((type) => {
-      this.colorsArray.push(type.color[1]);
+    this.typesOfBudget.map((type: { color: string[]; name: string }) => {
       this.types.push(type.name);
     });
+  }
+
+  getTypesOfBudget(types: any[], cores: string[][]): void {
+    const lengthColors = cores.length;
+    const lengthTypes = types.length;
+
+    for (let i = 0; i < lengthTypes; i++) {
+      const corIndex = i % lengthColors;
+
+      this.typesOfBudget.push({ ...types[i], color: cores[corIndex] });
+    }
   }
 
   setMerge() {
     this.planned = [];
     this.current = [];
     this.remaining = [];
-    this.colorsArray = [];
     this.types = [];
     const formObject = this.incomeForm.getRawValue();
 
-    this.typesOfBudget.map((type) => {
-      this.colorsArray.push(type.color[1]);
+    this.typesOfBudget.map((type: any) => {
       this.types.push(type.name);
       this.planned.push(formObject.realIncome * (type.portion / 100));
-      this.gastos.map((gasto) => {
-        if (gasto.name === type.name) {
-          this.current.push(gasto.value);
-          this.remaining.push(formObject.realIncome * (type.portion / 100) - gasto.value);
+      this.spend.map((spend) => {
+        if (spend.classification === type.name) {
+          this.current.push(spend.value);
+          this.remaining.push(formObject.realIncome * (type.portion / 100) - spend.value);
         }
       });
     });
-
     this.mergeOption = {
       tooltip: {
         trigger: "axis",

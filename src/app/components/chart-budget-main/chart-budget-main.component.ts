@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { EChartsOption } from "echarts";
+import { TypeService } from "src/app/utils/service/type.service";
 
 @Component({
   selector: "app-chart-budget-main",
@@ -7,35 +8,40 @@ import { EChartsOption } from "echarts";
   styleUrls: ["./chart-budget-main.component.scss"],
 })
 export class ChartBudgetMainComponent {
-  typesOfBudget = [
-    {
-      name: "Basic expanses",
-      portion: 50,
-      color: ["#fb8c00", "#ffa726"],
-    },
-    {
-      name: "Leisure expenses",
-      portion: 20,
-      color: ["#43a047", "#66bb6a"],
-    },
-    {
-      name: "Education",
-      portion: 30,
-      color: ["#3a66ff ", "#6b8cff "],
-    },
+  typesOfBudget: any = [];
+  colorAux = [
+    ["#fb8c00", "#ffa726"],
+    ["#43a047", "#66bb6a"],
+    ["#3a66ff ", "#6b8cff "],
   ];
   colorsArray: string[] = [];
   dataChart: object[] = [];
 
+  constructor(private typeService: TypeService) {}
+
   ngOnInit(): void {
-    this.makeChart();
+    this.typeService.getAllTypes().subscribe((types) => {
+      this.getTypesOfBudget(types, this.colorAux);
+      this.makeChart();
+    });
   }
 
   makeChart() {
-    this.typesOfBudget.map((type) => {
+    this.typesOfBudget.map((type: { color: string[]; name: any; portion: any }) => {
       this.colorsArray.push(type.color[1]);
       this.dataChart.push({ name: type.name, value: type.portion });
     });
+  }
+
+  getTypesOfBudget(types: any[], cores: string[][]): void {
+    const lengthColors = cores.length;
+    const lengthTypes = types.length;
+
+    for (let i = 0; i < lengthTypes; i++) {
+      const corIndex = i % lengthColors;
+
+      this.typesOfBudget.push({ ...types[i], color: cores[corIndex] });
+    }
   }
 
   chartOption: EChartsOption = {

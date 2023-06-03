@@ -21,11 +21,11 @@
         </mat-form-field>
       </div>
     </form>
-    <div class="buttons" (click)="cancel()">
-      <button mat-raised-button class="cancel-button">
+    <div class="buttons">
+      <button mat-raised-button (click)="cancel()" class="cancel-button">
         <span> Cancel </span>
       </button>
-      <button mat-raised-button class="confirm-button">
+      <button mat-raised-button (click)="edit()" class="confirm-button">
         <span> Confirm </span>
       </button>
     </div>

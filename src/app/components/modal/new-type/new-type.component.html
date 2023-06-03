@@ -4,12 +4,12 @@
       <div class="form-row">
         <mat-form-field appearance="outline">
           <mat-label>Type Name</mat-label>
-          <input matInput formControlName="typeName" name="typeName" />
+          <input matInput formControlName="name" name="name" />
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Type Portion</mat-label>
           <mat-icon matSuffix class="icon">percent</mat-icon>
-          <input type="number" max="100" min="0" matInput formControlName="typePortion" name="typePortion" />
+          <input type="number" max="100" min="0" matInput formControlName="portion" name="portion" />
         </mat-form-field>
       </div>
     </form>
@@ -17,7 +17,7 @@
       <button mat-raised-button class="cancel-button">
         <span> Cancel </span>
       </button>
-      <button mat-raised-button class="confirm-button">
+      <button mat-raised-button class="confirm-button" (click)="save()">
         <span> Confirm </span>
       </button>
     </div>

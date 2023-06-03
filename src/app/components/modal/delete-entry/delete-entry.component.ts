@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { EditEntryComponent } from "../edit-entry/edit-entry.component";
 import { Entry } from "src/app/utils/model/entry.model";
+import { EntryService } from "src/app/utils/service/entry.service";
+import { TypeService } from "src/app/utils/service/type.service";
 
 @Component({
   selector: "app-delete-entry",
@@ -11,14 +13,16 @@ import { Entry } from "src/app/utils/model/entry.model";
 })
 export class DeleteEntryComponent {
   entryForm!: FormGroup;
-  entryClassification: Array<string> = ["Basic expanses", "Leisure expenses", "Education"];
+  entryClassification: Array<string> = [];
   dateModified!: Date;
 
   constructor(
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<EditEntryComponent>,
     @Inject(MAT_DIALOG_DATA)
-    public entry: Entry
+    public entry: Entry,
+    private entryService: EntryService,
+    private typeService: TypeService
   ) {}
 
   ngOnInit(): void {
@@ -33,14 +37,20 @@ export class DeleteEntryComponent {
     this.entryForm.controls["entryValue"].disable();
     this.entryForm.controls["entryDescription"].disable();
     this.dateModified = this.handleDate(this.entry.date);
+    this.typeService.getAllTypes().subscribe((types) => {
+      types.forEach((type) => this.entryClassification.push(type.name));
+    });
   }
 
   cancel(): void {
     this.dialogRef.close();
   }
 
-  save(): void {
-    this.dialogRef.close();
+  delete(): void {
+    this.entryService.deleteEntry(this.entry).subscribe(() => {
+      this.dialogRef.close();
+      window.location.reload();
+    });
   }
 
   handleDate(dateString: string): Date {
