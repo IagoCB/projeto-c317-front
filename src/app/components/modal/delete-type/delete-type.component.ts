@@ -35,8 +35,9 @@ export class DeleteTypeComponent {
   }
 
   delete(): void {
-    console.log(this.type);
-    this.typeService.deleteType(this.type).subscribe();
-    this.dialogRef.close();
+    this.typeService.deleteType(this.type).subscribe(() => {
+      this.dialogRef.close();
+      window.location.reload();
+    });
   }
 }

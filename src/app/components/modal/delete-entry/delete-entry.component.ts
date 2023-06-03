@@ -48,8 +48,8 @@ export class DeleteEntryComponent {
 
   delete(): void {
     this.entryService.deleteEntry(this.entry).subscribe(() => {
-      this.entryService.showMessage("Entry Deleted");
       this.dialogRef.close();
+      window.location.reload();
     });
   }
 

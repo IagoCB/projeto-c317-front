@@ -39,10 +39,7 @@ export class EntryComponent {
       startDate: this.handleDate(formValues.startDate),
       endDate: this.handleDate(formValues.endDate),
     };
-    console.log(dates);
     this.entryService.getFilterEntrys(dates).subscribe((entries) => {
-      this.handleDate2(entries);
-      console.log(entries);
       this._$entriesFilter.next(entries);
     });
   }
@@ -61,23 +58,5 @@ export class EntryComponent {
     }
 
     return `${year}-${month}-${day}`;
-  }
-
-  handleDate2(entries: any[]): void {
-    entries.forEach((entry) => {
-      let day = entry.date[2].toString();
-      let month = entry.date[1].toString();
-      const year = entry.date[0].toString();
-
-      if (+day < 10) {
-        day = `0${day}`;
-      }
-
-      if (+month < 10) {
-        month = `0${month}`;
-      }
-
-      entry.date = `${day}/${month}/${year}`;
-    });
   }
 }

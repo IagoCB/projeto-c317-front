@@ -12,15 +12,27 @@ import { Observable } from "rxjs";
   styleUrls: ["./entry-list.component.scss"],
 })
 export class EntryListComponent {
-  @Input() $entriesFilter: Observable<Entry[]> | undefined;
+  @Input() $entriesFilter?: Observable<Entry[]>;
   entries: Entry[] = [];
+  available = true;
   displayedColumns = ["name", "date", "value", "classification", "description", "action"];
 
   constructor(public dialog: MatDialog, private entryService: EntryService) {}
   ngOnInit(): void {
-    this.entryService.getAllEntrys().subscribe((entries) => {
-      this.entries = entries;
-      this.handleDate();
+    this.$entriesFilter?.subscribe((values) => {
+      this.available = false;
+      setTimeout(() => {
+        this.available = true;
+      }, 500);
+      if (values.length > 0) {
+        this.entries = values;
+        this.handleDate();
+      } else {
+        this.entryService.getAllEntrys().subscribe((entries) => {
+          this.entries = entries;
+          this.handleDate();
+        });
+      }
     });
   }
 
@@ -46,6 +58,7 @@ export class EntryListComponent {
 
   handleDate(): void {
     this.entries.forEach((entries) => {
+      console.log(entries);
       let day = entries.date[2].toString();
       let month = entries.date[1].toString();
       const year = entries.date[0].toString();

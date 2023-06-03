@@ -40,8 +40,8 @@ export class NewEntryModalComponent {
   save(): void {
     console.log(this.entryForm.value);
     this.entryService.createEntry(this.entryForm.value).subscribe(() => {
-      this.entryService.showMessage("Entry Created");
       this.dialogRef.close();
+      window.location.reload();
     });
   }
 }

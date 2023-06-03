@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { MatSnackBar } from "@angular/material/snack-bar";
 
@@ -39,8 +39,10 @@ export class EntryService {
   }
 
   getFilterEntrys(dates: any): Observable<Entry[]> {
-    console.log("aaaaaaaaaaaaaaaaaaa", dates);
-    return this.http.get(`${this.baseUrl}/filter`, dates).pipe(
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("startDate", dates.startDate);
+    queryParams = queryParams.append("endDate", dates.endDate);
+    return this.http.get<Entry[]>(`${this.baseUrl}/filter`, { params: queryParams }).pipe(
       map((obj) => obj),
       catchError((e) => this.errorHandler(e))
     );
