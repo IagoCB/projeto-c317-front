@@ -38,7 +38,6 @@ export class NewEntryModalComponent {
   }
 
   save(): void {
-    console.log(this.entryForm.value);
     this.entryService.createEntry(this.entryForm.value).subscribe(() => {
       this.dialogRef.close();
       window.location.reload();

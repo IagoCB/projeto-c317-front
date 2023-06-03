@@ -58,7 +58,6 @@ export class EntryListComponent {
 
   handleDate(): void {
     this.entries.forEach((entries) => {
-      console.log(entries);
       let day = entries.date[2].toString();
       let month = entries.date[1].toString();
       const year = entries.date[0].toString();

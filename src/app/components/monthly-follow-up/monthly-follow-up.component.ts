@@ -111,7 +111,6 @@ export class MonthlyFollowUpComponent {
     });
     this.entryService.getSpend(date.getFullYear(), date.getMonth()).subscribe((spend) => {
       this.spend = spend;
-      console.log(this.spend);
     });
     this.incomeForm.valueChanges.subscribe(() => {
       const income = this.incomeForm.get("income")!.value;
