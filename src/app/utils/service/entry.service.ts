@@ -57,7 +57,7 @@ export class EntryService {
   }
 
   getSpend(year: number, month: number) {
-    const url = `${this.baseUrl}?year=${year}&month=${month}`;
+    const url = `${this.baseUrl}/spend?year=${year}&month=${month}`;
     return this.http.get(url).pipe(
       map((obj) => obj),
       catchError((e) => this.errorHandler(e))
