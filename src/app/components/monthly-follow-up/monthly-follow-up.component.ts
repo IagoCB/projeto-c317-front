@@ -105,11 +105,12 @@ export class MonthlyFollowUpComponent {
 
   ngOnInit(): void {
     const date = new Date();
+    const monthDate = date.getMonth() + 1;
     this.typeService.getAllTypes().subscribe((types) => {
       this.getTypesOfBudget(types, this.colorAux);
       this.makeChart();
     });
-    this.entryService.getSpend(date.getFullYear(), date.getMonth()).subscribe((spend) => {
+    this.entryService.getSpend(date.getFullYear(), monthDate).subscribe((spend) => {
       this.spend = spend;
     });
     this.incomeForm.valueChanges.subscribe(() => {
