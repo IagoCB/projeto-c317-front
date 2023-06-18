@@ -22,7 +22,7 @@ export class MonthlyFollowUpComponent {
     ["#43a047", "#66bb6a"],
     ["#3a66ff ", "#6b8cff "],
   ];
-  spend: { classification: string; value: number }[] = [];
+  spend: { name: string; value: number }[] = [];
   colorsArray: string[] = ["#ffa726", "#66bb6a", "#6b8cff"];
   types: string[] = [];
   planned: number[] = [];
@@ -151,7 +151,7 @@ export class MonthlyFollowUpComponent {
       this.types.push(type.name);
       this.planned.push(formObject.realIncome * (type.portion / 100));
       this.spend.map((spend) => {
-        if (spend.classification === type.name) {
+        if (spend.name === type.name) {
           this.current.push(spend.value);
           this.remaining.push(formObject.realIncome * (type.portion / 100) - spend.value);
         }
